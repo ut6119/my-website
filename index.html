@@ -105,12 +105,41 @@
             </div>
 
             <div class="form-group">
+                <label for="payment">決済方法</label>
+                <select id="payment" name="payment" required>
+                    <option value="">決済方法を選択</option>
+                    <option value="現金払い">現金払い</option>
+                    <option value="クレジット払い">クレジット払い</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="notes">ご要望・その他</label>
                 <textarea id="notes" name="notes" rows="4"></textarea>
             </div>
 
             <button type="submit">予約する</button>
         </form>
+
+        <script>
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const res = await fetch('/.netlify/functions/send-mail', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+    alert(result.message);
+  });
+</script>
+
+        
     </div>
 </body>
 </html>
