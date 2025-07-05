@@ -1,0 +1,23 @@
+{
+  "name": "skk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ut6119/my-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ut6119/my-website/issues"
+  },
+  "homepage": "https://github.com/ut6119/my-website#readme",
+  "description": "",
+  "dependencies": {
+    "nodemailer": "^7.0.4"
+  }
+}
