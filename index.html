@@ -82,28 +82,43 @@
 
             <div class="form-group">
                 <label for="time">ご希望時間</label>
-                <input type="time" id="time" name="time" required>
-            </div>
+                <select id="time" name="time" required>
+  <option value="">時間を選択</option>
+</select>
 
-            <div class="form-group">
-                <label for="course">コース</label>
-                <select id="course" name="course" required>
-                    <option value="">コースを選択</option>
-                    <option value="施術90分コース">施術90分コース</option>
-                    <option value="施術120分コース">施術120分コース</option>
-                    <option value="施術150分コース">施術150分コース</option>
-                    <option value="施術3時間コース">施術3時間コース</option>
-                    <option value="施術4時間コース">施術4時間コース</option>
-                    <option value="施術5時間コース">施術5時間コース</option>
-                    <option value="施術6時間コース">施術6時間コース</option>
-                    <option value="施術7時間コース">施術7時間コース</option>
-                    <option value="施術8時間コース">施術8時間コース</option>
-                    <option value="施術9時間コース">施術9時間コース</option>
-                    <option value="施術10時間コース">施術10時間コース</option>
-                    <option value="施術11時間コース">施術11時間コース</option>
-                    <option value="施術12時間コース">施術12時間コース</option>
-                </select>
-            </div>
+<script>
+  const select = document.getElementById("time");
+
+  // 当日分：9:00 〜 23:30
+  for (let hour = 9; hour <= 23; hour++) {
+    for (let min = 0; min < 60; min += 30) {
+      const hourStr = hour.toString().padStart(2, "0");
+      const minStr = min.toString().padStart(2, "0");
+      const timeStr = `${hourStr}:${minStr}`;
+      const option = document.createElement("option");
+      option.value = timeStr;
+      option.textContent = timeStr;
+      select.appendChild(option);
+    }
+  }
+
+  // 翌日分：0:00 〜 8:30
+  for (let hour = 0; hour <= 8; hour++) {
+    for (let min = 0; min < 60; min += 30) {
+      // 8:30までで終了
+      if (hour === 8 && min > 30) {
+        break;
+      }
+      const hourStr = hour.toString().padStart(2, "0");
+      const minStr = min.toString().padStart(2, "0");
+      const timeStr = `${hourStr}:${minStr}`;
+      const option = document.createElement("option");
+      option.value = timeStr;
+      option.textContent = timeStr;
+      select.appendChild(option);
+    }
+  }
+</script>
 
             <div class="form-group">
                 <label for="payment">決済方法</label>
