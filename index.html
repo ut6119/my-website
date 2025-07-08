@@ -81,10 +81,22 @@
             </div>
 
             <div class="form-group">
-                <label for="time">ご希望時間</label>
-                <select id="time" name="time" required>
-  <option value="">時間を選択</option>
-</select>
+  <label for="time">ご希望時間</label>
+  <select id="time" name="time" required>
+    <option value="">時間を選択</option>
+  </select>
+
+  <label for="meeting_place">待ち合わせ場所</label>
+  <select id="meeting_place" name="meeting_place" required>
+    <option value="">待ち合わせ場所を選択</option>
+    <option value="最寄駅・指定場所">最寄駅・指定場所</option>
+    <option value="ホテル">ホテル</option>
+    <option value="自宅">自宅</option>
+  </select>
+
+  <label for="meeting_detail">最寄駅・指定場所について</label>
+  <textarea id="meeting_detail" name="meeting_detail" rows="4" placeholder="詳しくご記入ください"></textarea>
+</div>
 
 <script>
   const select = document.getElementById("time");
@@ -105,7 +117,6 @@
   // 翌日分：0:00 〜 8:30
   for (let hour = 0; hour <= 8; hour++) {
     for (let min = 0; min < 60; min += 30) {
-      // 8:30までで終了
       if (hour === 8 && min > 30) {
         break;
       }
