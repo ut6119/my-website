@@ -29,6 +29,11 @@
         .form-group {
             margin-bottom: 20px;
         }
+
+        .space-label {
+            margin-top: 20px;
+            display: block;
+        }
         label {
             display: block;
             margin-bottom: 5px;
@@ -40,7 +45,6 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             box-sizing: border-box;
-            margin-bottom: 20px;
         }
         button {
             width: 100%;
@@ -87,7 +91,7 @@
     <option value="">時間を選択</option>
   </select>
 
-  <label for="meeting_place">待ち合わせ場所</label>
+  <label for="meeting_place" class="space-label">待ち合わせ場所</label>
   <select id="meeting_place" name="meeting_place" required>
     <option value="">待ち合わせ場所を選択</option>
     <option value="最寄駅・指定場所">最寄駅・指定場所</option>
@@ -95,7 +99,7 @@
     <option value="自宅">自宅</option>
   </select>
 
-  <label for="meeting_detail">最寄駅・指定場所について</label>
+  <label for="meeting_detail" class="space-label">最寄駅・指定場所について</label>
   <textarea id="meeting_detail" name="meeting_detail" rows="4" placeholder="詳しくご記入ください"></textarea>
 </div>
 
