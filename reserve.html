@@ -2,95 +2,103 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LEAD - 予約フォーム</title>
+  <title>予約フォーム</title>
   <style>
     body {
       margin: 0;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background: linear-gradient(135deg, #2c1d0c, #6b3d1d);
+      padding: 0;
+      font-family: 'Hiragino Sans', 'ヒラギノ角ゴ', sans-serif;
+      background: linear-gradient(135deg, #1e130c, #9a8478);
       color: #fff;
     }
     header {
-      background: #3b230f;
-      color: #fff;
-      padding: 15px 0;
-      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    header nav a {
-      color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
+    header .logo {
+      font-size: 22px;
       font-weight: bold;
+      color: #d4af37;
     }
-    header nav a:hover {
-      text-decoration: underline;
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 15px;
     }
     .container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 50px auto;
-      background: #fff;
-      color: #333;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     }
     h1 {
       text-align: center;
-      color: #2c3e50;
-      margin-bottom: 30px;
+      color: #d4af37;
+      margin-bottom: 40px;
     }
     .form-group {
-      margin-bottom: 20px;
-    }
-    .space-label {
-            margin-top: 20px;
-            display: block;
+      margin-bottom: 30px; /* ← 縦の間隔を大きめに設定 */
     }
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       font-weight: bold;
     }
-    input, select, textarea {
+    input, select, textarea, button {
       width: 100%;
       padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #c69c6d;
-      color: white;
       border: none;
       border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      background-color: #d4af37;
+      color: #000;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: #a67c52;
+      background-color: #b8932e;
     }
   </style>
 </head>
 <body>
-
   <header>
+    <div class="logo">LEAD</div>
     <nav>
-      <a href="index.html">Top</a>
-      <a href="course.html">Course</a>
-      <a href="cast.html">Cast</a>
-      <a href="index.html#schedule">Schedule</a>
-      <a href="index.html#news">News</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="reserve.html">予約</a>
+      <ul>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="/course.html">コース料金</a></li>
+        <li><a href="cast.html">キャスト</a></li>
+        <li><a href="index.html#schedule">スケジュール</a></li>
+        <li><a href="index.html#news">お知らせ</a></li>
+        <li><a href="index.html#contact">お問い合わせ</a></li>
+        <li><a href="reserve.html#reserve">予約</a></li>
+      </ul>
     </nav>
   </header>
 
   <div class="container">
-    <h1>LEAD 予約フォーム</h1>
+    <h1>予約フォーム</h1>
     <form name="reservation">
       <div class="form-group">
         <label for="name">お名前</label>
@@ -107,14 +115,16 @@
         <input type="email" id="email" name="email" required>
       </div>
 
-        <label for="meeting_place" class="space-label">ご希望セラピスト</label>
-        <select id="meeting_place" name="meeting_place" required>
+      <div class="form-group">
+        <label for="therapist">ご希望セラピスト</label>
+        <select id="therapist" name="therapist" required>
           <option value="">セラピストを選択</option>
           <option value="蒼人">蒼人</option>
         </select>
+      </div>
 
       <div class="form-group">
-        <label for="date" class="space-label">ご希望日</label>
+        <label for="date">ご希望日</label>
         <input type="date" id="date" name="date" required>
       </div>
 
@@ -123,17 +133,21 @@
         <select id="time" name="time" required>
           <option value="">時間を選択</option>
         </select>
+      </div>
 
-        <label for="meeting_place" class="space-label">待ち合わせ場所</label>
+      <div class="form-group">
+        <label for="meeting_place">待ち合わせ場所</label>
         <select id="meeting_place" name="meeting_place" required>
           <option value="">待ち合わせ場所を選択</option>
           <option value="最寄駅・指定場所">最寄駅・指定場所</option>
           <option value="ホテル">ホテル</option>
           <option value="自宅">自宅</option>
         </select>
+      </div>
 
-        <label for="meeting_detail" class="space-label">最寄駅・指定場所について</label>
-        <textarea id="meeting_detail" name="meeting_detail" rows="3" placeholder="詳しくご記入ください"></textarea>
+      <div class="form-group">
+        <label for="meeting_detail">最寄駅・指定場所について</label>
+        <textarea id="meeting_detail" name="meeting_detail" rows="4" placeholder="詳しくご記入ください"></textarea>
       </div>
 
       <div class="form-group">
@@ -180,6 +194,5 @@
       }
     }
   </script>
-
 </body>
 </html>
