@@ -4,607 +4,769 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEAD（リード）- 女性用風俗・レンタル彼氏</title>
-    <meta name="description" content="女性用風俗・レンタル彼氏サービス【LEAD（リード）】貴女の心を癒すセラピストがお待ちしております。">
+    <meta name="description" content="女性用風俗、レンタル彼氏を融合させた新たなる形の女風店【LEAD（リード）】 貴女の心をセラピストに奪われてみませんか？">
+    <meta name="robots" content="index, follow">
+    
+    <!-- CDN Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap');
-    body {
-        font-family: 'Noto Serif JP', serif;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-    }
-
-    .header-gradient {
-        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    }
-
-    .card-gradient {
-        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-    }
-
-    .info-gradient {
-        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-    }
-
-    .cast-card {
-        background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
-    }
-
-    .course-card {
-        background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
-    }
-
-    .nav-item {
-        transition: all 0.3s ease;
-    }
-
-    .nav-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .animate-fade-in {
-        animation: fadeIn 0.6s ease-in;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #d4af37;
+            --accent-color: #8b4513;
+            --text-light: #f5f5f5;
+            --bg-dark: #0f0f0f;
+            --bg-light: #fafafa;
         }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    }
-
-    .animate-slide-in {
-        animation: slideIn 0.8s ease-out;
-    }
-
-    @keyframes slideIn {
-        from {
-            opacity: 0;
-            transform: translateX(-30px);
+        
+        body {
+            font-family: 'Noto Serif JP', serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--bg-light);
         }
-
-        to {
-            opacity: 1;
-            transform: translateX(0);
+        
+        .en-font {
+            font-family: 'Playfair Display', serif;
         }
-    }
-
-    .mobile-menu {
-        display: none;
-    }
-
-    .mobile-menu.active {
-        display: block;
-    }
-
-    @media (max-width: 768px) {
-        .desktop-nav {
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--text-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-menu a:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
             display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
         }
-    }
-
-    .course-table {
-        backdrop-filter: blur(10px);
-        background: rgba(255, 255, 255, 0.9);
-    }
-
-    .schedule-badge {
-        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-        color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: bold;
-    }
-
-    .cast-image {
-        width: 200px;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
+        
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--primary-color);
+            padding: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            color: var(--text-light);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu a:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--secondary-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #f4d03f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* Main Slider */
+        .main-slider {
+            height: 400px;
+            margin: 4rem 0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .swiper-slide {
+            background: var(--primary-color);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .swiper-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            opacity: 0.8;
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .slide-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        /* Schedule Section */
+        .schedule-section {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 4rem 0;
+        }
+        
+        .schedule-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .schedule-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .schedule-title .en-title {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .schedule-card {
+            background: var(--primary-color);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .schedule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .schedule-card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .schedule-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+        }
+        
+        .schedule-card .time {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .schedule-card .name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .schedule-card .details {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .schedule-card .status {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+        
+        /* News Section */
+        .news-section {
+            padding: 4rem 0;
+            background: var(--bg-light);
+        }
+        
+        .news-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .news-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-title .en-title {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+        
+        .news-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .news-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .news-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .news-item .date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .news-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .news-item p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .news-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .news-item a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--accent-color);
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .main-slider {
+                height: 300px;
+                margin: 2rem 0;
+            }
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+            
+            .news-grid {
+                padding: 0 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* Contact Info */
+        .contact-info {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header-gradient text-white shadow-lg">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <h1 class="text-3xl font-bold">LEAD</h1>
-                    <span class="text-lg opacity-90">リード</span>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="desktop-nav hidden md:flex space-x-6">
-                    <a href="#home" class="nav-item px-4 py-2 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all">
-                        <i class="fas fa-home mr-2"></i>
-                        Top
-                                            
-                    </a>
-                    <a href="#course" class="nav-item px-4 py-2 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all">
-                        <i class="fas fa-list mr-2"></i>
-                        コース
-                                            
-                    </a>
-                    <a href="#cast" class="nav-item px-4 py-2 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all">
-                        <i class="fas fa-user mr-2"></i>
-                        キャスト
-                                            
-                    </a>
-                    <a href="#schedule" class="nav-item px-4 py-2 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all">
-                        <i class="fas fa-calendar mr-2"></i>
-                        スケジュール
-                                            
-                    </a>
-                    <a href="#info" class="nav-item px-4 py-2 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition-all">
-                        <i class="fas fa-info-circle mr-2"></i>
-                        お知らせ
-                                            
-                    </a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars text-2xl"></i>
+    <header class="header">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="logo en-font">LEAD</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Top<br><span class="text-sm">トップ</span></a></li>
+                    <li><a href="#course.html">Course<br><span class="text-sm">コース料金</span></a></li>
+                    <li><a href="#cast">Cast<br><span class="text-sm">キャスト</span></a></li>
+                    <li><a href="#schedule">Schedule<br><span class="text-sm">スケジュール</span></a></li>
+                    <li><a href="#news">News<br><span class="text-sm">お知らせ</span></a></li>
+                    <li><a href="#contact">Contact<br><span class="text-sm">お問い合わせ</span></a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
                 </button>
-            </div>
-
-            <!-- Mobile Navigation -->
-            <div class="mobile-menu mt-4 space-y-2">
-                <a href="#home" class="block py-2 px-4 rounded bg-white bg-opacity-20">
-                    <i class="fas fa-home mr-2"></i>
-                    Top
-                                    
-                </a>
-                <a href="#course" class="block py-2 px-4 rounded bg-white bg-opacity-20">
-                    <i class="fas fa-list mr-2"></i>
-                    コース
-                                    
-                </a>
-                <a href="#cast" class="block py-2 px-4 rounded bg-white bg-opacity-20">
-                    <i class="fas fa-user mr-2"></i>
-                    キャスト
-                                    
-                </a>
-                <a href="#schedule" class="block py-2 px-4 rounded bg-white bg-opacity-20">
-                    <i class="fas fa-calendar mr-2"></i>
-                    スケジュール
-                                    
-                </a>
-                <a href="#info" class="block py-2 px-4 rounded bg-white bg-opacity-20">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    お知らせ
-                                    
-                </a>
-            </div>
+            </nav>
+        </div>
+        <div class="mobile-menu">
+            <a href="#home">Top / トップ</a>
+            <a href="#course.html">Course / コース料金</a>
+            <a href="#cast">Cast / キャスト</a>
+            <a href="#schedule">Schedule / スケジュール</a>
+            <a href="#news">News / お知らせ</a>
+            <a href="#contact">Contact / お問い合わせ</a>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 space-y-12">
-        <!-- Home Section -->
-        <section id="home" class="animate-fade-in">
-            <div class="card-gradient rounded-xl p-8 shadow-xl text-center">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">LEAD（リード）</h2>
-                <p class="text-xl text-gray-700 mb-6">女性用風俗・レンタル彼氏サービス</p>
-                <p class="text-gray-600 leading-relaxed">
-
-                                        貴女の心を癒す特別な時間をご提供いたします。
-                    <br>
-
-                                        プロのセラピストが、貴女だけの特別なひとときをお届けします。
-                                    
-                </p>
-                <div class="mt-8 flex justify-center space-x-4">
-                    <div class="bg-white rounded-lg p-4 shadow-md">
-                        <i class="fas fa-clock text-2xl text-blue-600 mb-2"></i>
-                        <p class="text-sm text-gray-600">24時間営業</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-4 shadow-md">
-                        <i class="fas fa-shield-alt text-2xl text-green-600 mb-2"></i>
-                        <p class="text-sm text-gray-600">完全予約制</p>
-                    </div>
-                    <div class="bg-white rounded-lg p-4 shadow-md">
-                        <i class="fas fa-user-secret text-2xl text-purple-600 mb-2"></i>
-                        <p class="text-sm text-gray-600">プライバシー重視</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Cast Section -->
-        <section id="cast" class="animate-fade-in">
-            <div class="cast-card rounded-xl p-8 shadow-xl">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                    <i class="fas fa-user-tie mr-3"></i>
-                    キャスト
-                                    
-                </h2>
-
-                <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-8">
-                    <div class="text-center">
-                        <div class="w-48 h-60 mx-auto bg-gradient-to-br from-blue-400 to-purple-600 rounded-xl shadow-xl flex items-center justify-center mb-4">
-                            <i class="fas fa-user text-6xl text-white opacity-80"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">蒼人</h3>
-                        <p class="text-gray-600 mb-4">（36歳）</p>
-                        <div class="bg-white rounded-lg p-4 shadow-md">
-                            <p class="text-gray-700 mb-2">
-                                <i class="fas fa-heart text-red-500 mr-2"></i>
-
-                                                                優しさと包容力が自慢
-                                                            
-                            </p>
-                            <p class="text-gray-700 mb-2">
-                                <i class="fas fa-star text-yellow-500 mr-2"></i>
-
-                                                                豊富な経験と技術
-                                                            
-                            </p>
-                            <p class="text-gray-700">
-                                <i class="fas fa-shield-alt text-green-500 mr-2"></i>
-
-                                                                安心・安全なサービス
-                                                            
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="text-center md:text-left">
-                        <h4 class="text-xl font-bold text-gray-800 mb-4">プロフィール</h4>
-                        <div class="space-y-3 text-gray-700">
-                            <p>
-                                <strong>年齢:</strong>
-                                 36歳
-                            </p>
-                            <p>
-                                <strong>性格:</strong>
-                                 優しく思いやりがある
-                            </p>
-                            <p>
-                                <strong>趣味:</strong>
-                                 読書・映画鑑賞・料理
-                            </p>
-                            <p>
-                                <strong>特技:</strong>
-                                 マッサージ・カウンセリング
-                            </p>
-                            <p>
-                                <strong>メッセージ:</strong>
-                                <br>
-
-                                                            貴女の心に寄り添い、特別な時間をお届けします。
-                                <br>
-
-                                                            どんなお悩みでも、お気軽にお話しください。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Course Section -->
-
-<section id="pricing" style="background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.1); padding: 40px; margin: 40px auto; max-width: 900px; border-radius: 8px;">
-  <h2 style="text-align: center; margin-bottom: 30px;">新コース料金表</h2>
-
-  <table style="width: 100%; border-collapse: collapse;">
-    <thead>
-      <tr>
-        <th style="border-bottom: 2px solid #ccc; padding: 12px;">コース</th>
-        <th style="border-bottom: 2px solid #ccc; padding: 12px;">時間</th>
-        <th style="border-bottom: 2px solid #ccc; padding: 12px;">料金</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- 施術コース -->
-      <tr>
-        <td rowspan="5">施術コース</td>
-        <td>90分</td>
-        <td>18,000円</td>
-      </tr>
-      <tr>
-        <td>120分</td>
-        <td>24,000円</td>
-      </tr>
-      <tr>
-        <td>150分</td>
-        <td>30,000円</td>
-      </tr>
-      <tr>
-        <td>180分</td>
-        <td>36,000円</td>
-      </tr>
-      <tr>
-        <td>以降1時間毎</td>
-        <td>＋12,000円</td>
-      </tr>
-      <!-- お泊まりコース -->
-      <tr>
-        <td rowspan="5">お泊まりコース</td>
-        <td>10時間</td>
-        <td>60,000円</td>
-      </tr>
-      <tr>
-        <td>11時間</td>
-        <td>66,000円</td>
-      </tr>
-      <tr>
-        <td>12時間</td>
-        <td>72,000円</td>
-      </tr>
-      <tr>
-        <td>13時間</td>
-        <td>78,000円</td>
-      </tr>
-      <tr>
-        <td>14時間</td>
-        <td>84,000円</td>
-      </tr>
-      <!-- 貸切コース -->
-      <tr>
-        <td rowspan="9">貸切コース</td>
-        <td>15時間</td>
-        <td>90,000円</td>
-      </tr>
-      <tr>
-        <td>16時間</td>
-        <td>96,000円</td>
-      </tr>
-      <tr>
-        <td>17時間</td>
-        <td>102,000円</td>
-      </tr>
-      <tr>
-        <td>18時間</td>
-        <td>108,000円</td>
-      </tr>
-      <tr>
-        <td>19時間</td>
-        <td>114,000円</td>
-      </tr>
-      <tr>
-        <td>20時間</td>
-        <td>120,000円</td>
-      </tr>
-      <tr>
-        <td>21時間</td>
-        <td>126,000円</td>
-      </tr>
-      <tr>
-        <td>22時間</td>
-        <td>132,000円</td>
-      </tr>
-      <tr>
-        <td>23時間</td>
-        <td>138,000円</td>
-      </tr>
-    </tbody>
-  </table>
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="/reserve" target="_blank" style="display: inline-block; padding: 15px 30px; background: #3498db; color: #fff; text-decoration: none; border-radius: 4px;">
-    ご予約はこちら
-</a>
+    <!-- Contact Info Bar -->
+    <div class="contact-info" style="margin-top: 80px;">
+        <i class="fas fa-clock"></i> 24時間営業
+        <i class="fas fa-user-clock"></i> 受付：10時～24時
     </div>
-  <p style="margin-top: 20px; font-size: 0.95em; color: #555; text-align: center;">※全コース共通で指名料、交通費、オプションなど別途料金がかかる場合があります。</p>
-</section>
 
-        <!-- Schedule Section -->
-        <section id="schedule" class="animate-slide-in">
-            <div class="bg-white rounded-xl p-8 shadow-xl">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    本日のスケジュール
-                                    
-                </h2>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in">
+            <h1 class="en-font">LEAD</h1>
+            <p class="text-xl">貴女の心をセラピストに奪われてみませんか？</p>
+            <p class="mb-8">女性用風俗・レンタル彼氏を融合させた新たなる形のサービス</p>
+            <a href="#contact" class="cta-button">
+                <i class="fas fa-heart"></i> ご予約・お問い合わせ
+            </a>
+        </div>
+    </section>
 
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 shadow-lg">
-                        <h3 class="text-2xl font-bold text-white mb-4">蒼人</h3>
-                        <div class="schedule-badge mb-4">
-                            <i class="fas fa-clock mr-2"></i>
-
-                                                        本日出勤予定
-                                                    
-                        </div>
-                        <p class="text-white text-lg">
-                            <i class="fas fa-business-time mr-2"></i>
-
-                                                        12:00 ～ 22:00
-                                                    
-                        </p>
-                        <p class="text-white opacity-90 mt-2">
-                                                    ご予約お待ちしております
-                                                </p>
+    <!-- Main Slider -->
+    <section class="container mx-auto px-4">
+        <div class="main-slider swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <h3>Premium Service</h3>
+                        <p>最高級のおもてなしをご提供いたします</p>
                     </div>
-
-                    <div class="mt-8 p-6 bg-gray-50 rounded-lg">
-                        <h4 class="text-lg font-bold text-gray-800 mb-4">ご予約について</h4>
-                        <div class="grid md:grid-cols-3 gap-4 text-sm text-gray-600">
-                            <div class="bg-white p-3 rounded-lg shadow">
-                                <i class="fas fa-phone text-blue-600 mb-2"></i>
-                                <p>完全予約制</p>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg shadow">
-                                <i class="fas fa-clock text-green-600 mb-2"></i>
-                                <p>24時間受付</p>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg shadow">
-                                <i class="fas fa-shield-alt text-purple-600 mb-2"></i>
-                                <p>プライバシー厳守</p>
-                            </div>
-                        </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <h3>Professional Cast</h3>
+                        <p>厳選されたプロフェッショナルなキャスト陣</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <h3>Luxury Experience</h3>
+                        <p>贅沢で特別な時間をお過ごしください</p>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
 
-        <!-- Information Section -->
-        <section id="info" class="animate-fade-in">
-            <div class="info-gradient rounded-xl p-8 shadow-xl">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                    <i class="fas fa-info-circle mr-3"></i>
-                    お知らせ
-                                    
-                </h2>
-
-                <div class="bg-white rounded-lg p-6 shadow-md">
-                    <div class="flex items-start space-x-4">
-                        <div class="bg-blue-100 p-3 rounded-lg">
-                            <i class="fas fa-credit-card text-blue-600 text-2xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2 mb-3">
-                                <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">NEW</span>
-                                <span class="text-gray-600">2025/7/5</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-3">
-                                                            クレジットカード決済について
-                                                        </h3>
-                            <p class="text-gray-700 leading-relaxed">
-
-                                                                クレジットカード決済をご利用いただけます。
-                                <br>
-
-                                                                より便利で安全なお支払い方法をご提供いたします。
-                                <br>
-                                <strong>対応カード:</strong>
-                                 VISA・MasterCard・JCB・AMEX・Diners
-                                                            
-                            </p>
-                            <div class="mt-4 p-4 bg-blue-50 rounded-lg">
-                                <p class="text-blue-800 font-semibold">
-                                    <i class="fas fa-shield-alt mr-2"></i>
-
-                                                                        SSL暗号化通信により、お客様の情報を安全に保護いたします。
-                                                                    
-                                </p>
-                            </div>
-                        </div>
+    <!-- Today's Schedule -->
+    <section id="schedule" class="schedule-section">
+        <div class="container mx-auto px-4">
+            <div class="schedule-title">
+                <h2 class="en-font">Today's Schedule</h2>
+                <p class="en-title">本日の出勤情報</p>
+            </div>
+            <div class="schedule-grid">
+                <div class="schedule-card fade-in">
+                    <div class="time">
+                        <i class="far fa-clock"></i> 17:00～翌1:00
                     </div>
+                    <div class="name">蒼人 (36歳)</div>
+                    <div class="details">176cm</div>
+                    <div class="status">出勤予定</div>
+                </div>
+                <div class="schedule-card fade-in">
+                    <div class="time">
+                        <i class="far fa-clock"></i> 19:00～翌2:00
+                    </div>
+                    <div class="name">ケンタ (24歳)</div>
+                    <div class="details">177cm</div>
+                    <div class="status">DM確認中</div>
+                </div>
+                <div class="schedule-card fade-in">
+                    <div class="time">
+                        <i class="far fa-clock"></i> 20:00～翌3:00
+                    </div>
+                    <div class="name">ヒロシ (33歳)</div>
+                    <div class="details">182cm</div>
+                    <div class="status">DM確認中</div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="news-section">
+        <div class="container mx-auto px-4">
+            <div class="news-title">
+                <h2 class="en-font">Information</h2>
+                <p class="en-title">お店からのお知らせ</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-item fade-in">
+                    <div class="date">2025-07-5</div>
+                    <h3>クレジットカード決済のご案内</h3>
+                    <p>
+                        クレジットカード決済時の認証コードが追加されました。
+                        LEADの認証コードは【8888】となります。
+                        クレジットカード決済をご利用の方は、ご予約時にこちらのコードをご入力ください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="header-gradient text-white py-8 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-2xl font-bold mb-4">LEAD（リード）</h3>
-            <p class="opacity-90 mb-4">女性用風俗・レンタル彼氏サービス</p>
-            <div class="flex justify-center space-x-6 mb-4">
-                <div class="text-sm">
-                    <i class="fas fa-clock mr-2"></i>
-
-                                        24時間営業
-                                    
-                </div>
-                <div class="text-sm">
-                    <i class="fas fa-user-clock mr-2"></i>
-
-                                        完全予約制
-                                    
-                </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>LEAD（リード）</h3>
+                <p>女性用風俗・レンタル彼氏を融合させた新たなる形のサービス</p>
+                <p>貴女の心をセラピストに奪われてみませんか？</p>
             </div>
-            <p class="text-sm opacity-75">
-                            &copy; 2025 LEAD. All rights reserved.
-                        </p>
+            <div class="footer-section">
+                <h3>営業時間</h3>
+                <p><i class="fas fa-clock"></i> 24時間営業</p>
+                <p><i class="fas fa-user-clock"></i> 受付：10時～24時</p>
+            </div>
+            <div class="footer-section">
+                <h3>サービス</h3>
+                <a href="#course.html">コース料金</a>
+                <a href="#cast">キャスト紹介</a>
+                <a href="#schedule">スケジュール</a>
+                <a href="#contact">ご予約・お問い合わせ</a>
+            </div>
+            <div class="footer-section">
+                <h3>SNS</h3>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-line"></i> LINE</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LEAD（リード）. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script>
-    // Mobile menu toggle
-    function toggleMobileMenu() {
-        const mobileMenu = document.querySelector('.mobile-menu');
-        mobileMenu.classList.toggle('active');
-    }
+        $(document).ready(function() {
+            // Mobile menu toggle
+            $('.mobile-menu-btn').click(function() {
+                $('.mobile-menu').toggleClass('active');
+            });
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+            // Smooth scrolling
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 80
+                    }, 1000);
+                }
+            });
+
+            // Fade in animation on scroll
+            $(window).scroll(function() {
+                $('.fade-in').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                        $(this).addClass('fade-in');
+                    }
                 });
-            }
-            // Close mobile menu if open
-            document.querySelector('.mobile-menu').classList.remove('active');
-        });
-    });
+            });
 
-    // Add scroll animation trigger
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in');
-            }
-        });
-    }, observerOptions);
-
-    // Observe all sections
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-    });
-
-    // Add some interactive effects
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px)';
+            // Header scroll effect
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 100) {
+                    $('.header').addClass('scrolled');
+                } else {
+                    $('.header').removeClass('scrolled');
+                }
+            });
         });
 
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
+        // Swiper initialization
+        var swiper = new Swiper('.main-slider', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
         });
-    });
 
-    // Schedule status update (example)
-    function updateScheduleStatus() {
-        const now = new Date();
-        const currentHour = now.getHours();
-        const scheduleElement = document.querySelector('.schedule-badge');
+        // Add some interactive effects
+        $('.schedule-card').hover(function() {
+            $(this).find('.status').addClass('pulse');
+        }, function() {
+            $(this).find('.status').removeClass('pulse');
+        });
 
-        if (currentHour >= 12 && currentHour < 22) {
-            scheduleElement.innerHTML = '<i class="fas fa-circle text-green-400 mr-2"></i>現在勤務中';
-            scheduleElement.style.background = 'linear-gradient(45deg, #48bb78, #38a169)';
-        } else {
-            scheduleElement.innerHTML = '<i class="fas fa-clock mr-2"></i>本日出勤予定';
-        }
-    }
-
-    // Update schedule on page load
-    updateScheduleStatus();
-
-    // Update schedule every minute
-    setInterval(updateScheduleStatus, 60000);
+        // News item animations
+        $('.news-item').hover(function() {
+            $(this).find('h3').addClass('text-secondary');
+        }, function() {
+            $(this).find('h3').removeClass('text-secondary');
+        });
     </script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95cf804648b5b414","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.6.2","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
 </body>
 </html>
-<script id="html_badge_script1">
-window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
-"remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDqxx9BaT0609KZCGEm4nHXbNwIeVcHgEhXkfjeIK1Kp%2Bu6IfwJ2pjDnGXIaJq8RQz96Oc%2F%2FfYSNexDrdboBieuAQHaFaBywuJw%2Fi8V%2Fxum8v50GvSArhvJmoJb4lxzGNHU87BgrGAAjPIUQLbkasACJJiugVncRcGEueZs32LJy78JJWUIOS%2BythVYW9vGIPqW8awM%2F4JF%2F4SVR%2FOgB6LeCXCuTBx2ef3TY0yW3Woh7yx3bii%2FAgoaWtVr4aN%2FFmFAInFYVtyxSQvvc63R7Mf3ot044MoL3qEOt1qIIloIH7JbhSxTCs79X%2BXh3lhSRxZVssNsk7wVn9Hld4%2Fm7Ol6kS4%2BGRdujimYWkMUKLgW7LVDNkEBtq%2BaKswHfMU3T5k6xrNzGJgxH5HEylrYtc3DA0hKZS%2BZa6VxejfERwool2WX8g3GFLXOaes6hxd9yxQhqn3n2%2B6eZlcnBcylA4e2XrksxK%2FrOk7fl2VMTFgoDI";
-window.__genspark_locale = "ja-JP";
-window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDqxx9BaT0609KZCGEm4nHXbNwIeVcHgEhXkfjeIK1Kp+u6IfwJ2pjDnGXIaJq8RQz96Oc//fYSNexDrdboBieuAQHaFaBywuJw/i8V/xum8v50GvSArhvJmoJb4lxzGNHU87BgrGAAjPIUQLbkasACJJiugVncRcGEueZs32LJy78JJWUIOS+ythVYW9vGIPqW8awM/4JF/4SVR/OgB6LeCXCuTBx2ef3TY0yW3Woh7yx3bii/AgoaWtVr4aN/FmFAInFYVtyxSQvvc63R7Mf3ot044MoL3qEOt1qIIloIH7JbhSxTCs79X+Xh3lhSRxZVssNsk7wVn9Hld4/m7Ol6kS4+GRdujimYWkMUKLgW7LVDNkEBtq+aKswHfMU3T5k6xrNzGJgxH5HEylrYtc3DA0hKZS+Za6VxejfERwool2WX8g3GFLXOaes6hxd9yxQhqn3n2+6eZlcnBcylA4e2XrksxK/rOk7fl2VMTFgoDI";
-</script>
-
-<script id="html_badge_script2" src="https://www.genspark.ai/html_badge.js"></script>
-
-<script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDtS1P38FMwtehrGSX2IlccCgGxN%2FOtpdP6IJiEz6q01tBHsT7C0adI3Taji2NfABKlLbnSNfZ%2FdwbHL88pQ9gNYGG71pW3W8UhPvdyyNRAs%2B0o8ws8efEJOkm7UYpOcOEkg0TwwM%2B9MlW8JeqI4%2B%2BcDdQPkjEVDBwPeaGzb3hsa1fgWqpaRjZRNLAz8nW2CABLgpa5%2BiqozKVcalyEr3bKoTVz09qdIzUyBvQxeCT956edgZ5Rte45XtYyWs8arHEhtFjeNbKoD1gGFHlg28aj0DNkP4B1o3H2XbVW%2F%2FOaJ6WfRObry%2B9%2Bhjz6a%2FsYtupsdjaM%2Fa8Rc2%2BkkK0q%2BlgpC3RFRW0SWmXwSO2WqBDcx4ip425SFbeUDLgtcqUX4X5qn%2FnmrFwH1y6ncPLsd5ZKcf%2Fscck6gOmuDEUdEGmPKH%2BJ23MaPmerj2Xl7bksZwlGXcFMEpqOsN%2BD3q6LSjuUUQvWNiNID3%2FxK%2FiRezHy5Q";
+        window.__genspark_locale = "ja-JP";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDtS1P38FMwtehrGSX2IlccCgGxN/OtpdP6IJiEz6q01tBHsT7C0adI3Taji2NfABKlLbnSNfZ/dwbHL88pQ9gNYGG71pW3W8UhPvdyyNRAs+0o8ws8efEJOkm7UYpOcOEkg0TwwM+9MlW8JeqI4++cDdQPkjEVDBwPeaGzb3hsa1fgWqpaRjZRNLAz8nW2CABLgpa5+iqozKVcalyEr3bKoTVz09qdIzUyBvQxeCT956edgZ5Rte45XtYyWs8arHEhtFjeNbKoD1gGFHlg28aj0DNkP4B1o3H2XbVW//OaJ6WfRObry+9+hjz6a/sYtupsdjaM/a8Rc2+kkK0q+lgpC3RFRW0SWmXwSO2WqBDcx4ip425SFbeUDLgtcqUX4X5qn/nmrFwH1y6ncPLsd5ZKcf/scck6gOmuDEUdEGmPKH+J23MaPmerj2Xl7bksZwlGXcFMEpqOsN+D3q6LSjuUUQvWNiNID3/xK/iRezHy5Q";
+    </script>
+    
+        <script id="html_badge_script2" src="https://www.genspark.ai/html_badge.js"></script>
+        
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
