@@ -17,11 +17,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
     }
     header .logo {
       font-size: 22px;
@@ -42,44 +37,9 @@
       color: #fff;
       font-size: 15px;
     }
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      margin: 4px 0;
-    }
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        border-radius: 8px;
-        padding: 10px 0;
-      }
-      nav ul li {
-        margin: 10px 0;
-        text-align: center;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-      nav ul.show {
-        display: flex;
-      }
-    }
-
     .container {
       max-width: 800px;
-      margin: 120px auto 50px; /* 上に余白を追加 */
+      margin: 50px auto;
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
       border-radius: 16px;
@@ -91,7 +51,7 @@
       margin-bottom: 40px;
     }
     .form-group {
-      margin-bottom: 30px;
+      margin-bottom: 30px; /* ← 縦の間隔を大きめに設定 */
     }
     label {
       display: block;
@@ -124,13 +84,8 @@
 <body>
   <header>
     <div class="logo">LEAD</div>
-    <div class="menu-toggle" id="menu-toggle">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
     <nav>
-      <ul id="menu">
+      <ul>
         <li><a href="index.html">トップ</a></li>
         <li><a href="/course.html">コース料金</a></li>
         <li><a href="cast.html">キャスト</a></li>
@@ -238,12 +193,6 @@
         select.appendChild(option);
       }
     }
-
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
-    });
   </script>
 </body>
 </html>
