@@ -2,16 +2,12 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>Cast</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <title>キャスト - LEAD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: "Hiragino Sans", "ヒラギノ角ゴ", sans-serif;
+      font-family: 'Hiragino Sans', 'ヒラギノ角ゴ', sans-serif;
       background: linear-gradient(135deg, #1e130c, #9a8478);
       color: #fff;
     }
@@ -21,6 +17,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
     }
     header .logo {
       font-size: 22px;
@@ -41,51 +41,123 @@
       color: #fff;
       font-size: 15px;
     }
+    #menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.9);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 20px;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      #menu-toggle {
+        display: block;
+      }
+    }
+    .container {
+      max-width: 800px;
+      margin: 120px auto 50px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+    h1 {
+      text-align: center;
+      color: #d4af37;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+    h2 {
+      margin-top: 30px;
+      font-size: 22px;
+      color: #d4af37;
+      border-bottom: 1px solid #d4af37;
+      padding-bottom: 5px;
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    .profile-info {
+      text-align: left;
+      width: 100%;
+    }
+    .profile-info p {
+      margin: 10px 0;
+      font-size: 15px;
+    }
+    @media (min-width: 769px) {
+      .profile {
+        flex-direction: row;
+      }
+      .profile img {
+        margin-right: 20px;
+        margin-bottom: 0;
+      }
+      .profile-info {
+        width: auto;
+      }
+    }
   </style>
 </head>
-
 <body>
   <header>
     <div class="logo">LEAD</div>
     <nav>
-      <ul>
+      <div id="menu-toggle">☰</div>
+      <ul id="menu">
         <li><a href="index.html">トップ</a></li>
-        <li><a href="/course.html">コース料金</a></li>
+        <li><a href="course.html">コース料金</a></li>
         <li><a href="cast.html">キャスト</a></li>
         <li><a href="index.html#schedule">スケジュール</a></li>
         <li><a href="index.html#news">お知らせ</a></li>
         <li><a href="index.html#contact">お問い合わせ</a></li>
-        <li><a href="reserve.html#reserve">予約</a></li>
+        <li><a href="reserve.html">予約</a></li>
       </ul>
     </nav>
   </header>
 
-  <div class="max-w-3xl mx-auto my-12 p-8 rounded-xl shadow-xl bg-black bg-opacity-90 backdrop-blur-md">
-    <h2 class="text-center text-3xl font-bold text-yellow-500 mb-2">Cast</h2>
-    <p class="text-center text-yellow-500 mb-8">キャスト</p>
-
-      <div class="flex flex-col md:flex-row items-start justify-center space-y-6 md:space-y-0 md:space-x-8">
-  <div class="text-center">
-    <img src="images/aoto1.jpg" alt="蒼人" class="w-48 h-60 object-cover rounded-xl shadow-xl mx-auto mb-4">
-    <h3 class="text-xl font-bold text-white mb-2">蒼人</h3>
-    <p class="text-gray-300 mb-4">(36歳)</p>
-    <div class="bg-black rounded-lg p-4 shadow-md">
-      <p class="text-white mb-2"><i class="fas fa-heart text-red-500 mr-2"></i>優しさと包容力が自慢</p>
-      <p class="text-white mb-2"><i class="fas fa-star text-yellow-500 mr-2"></i>豊富な経験と技術</p>
-      <p class="text-white"><i class="fas fa-shield-alt text-green-500 mr-2"></i>安心・安全なサービス</p>
+  <div class="container">
+    <h1>キャスト</h1>
+    <h2>プロフィール</h2>
+    <div class="profile">
+      <img src="images/aoto.jpg" alt="蒼人の写真" />
+      <div class="profile-info">
+        <p><strong>名前:</strong> 蒼人</p>
+        <p><strong>年齢:</strong> 36歳</p>
+        <p><strong>性格:</strong> 優しく思いやりがある</p>
+        <p><strong>趣味:</strong> 読書・映画鑑賞・料理</p>
+        <p><strong>特技:</strong> マッサージ・カウンセリング</p>
+        <p><strong>メッセージ:</strong> 貴女の心に寄り添い、特別な時間をお届けします。どんなお悩みでも、お気軽にお話しください。</p>
+      </div>
     </div>
   </div>
 
-  <div class="text-left flex-1">
-    <h4 class="text-2xl font-bold text-yellow-500 mb-4 mt-0">プロフィール</h4>
-    <div class="space-y-3 text-white">
-      <p><strong>年齢:</strong> 36歳</p>
-      <p><strong>性格:</strong> 優しく思いやりがある</p>
-      <p><strong>趣味:</strong> 読書・映画鑑賞・料理</p>
-      <p><strong>特技:</strong> マッサージ・カウンセリング</p>
-      <p><strong>メッセージ:</strong><br>貴女の心に寄り添い、特別な時間をお届けします。<br>どんなお悩みでも、お気軽にお話しください。</p>
-    </div>
-  </div>
-</div>
+  <script>
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
+  </script>
 </body>
 </html>
