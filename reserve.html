@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>予約フォーム</title>
   <style>
     body {
@@ -47,7 +48,6 @@
       font-size: 24px;
       color: #fff;
     }
-    /* モバイル用 */
     @media (max-width: 768px) {
       nav ul {
         display: none;
@@ -68,7 +68,7 @@
     }
     .container {
       max-width: 800px;
-      margin: 100px auto 50px;
+      margin: 120px auto 50px;
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
       border-radius: 16px;
@@ -78,22 +78,23 @@
       text-align: center;
       color: #d4af37;
       margin-bottom: 40px;
+      font-size: 24px;
     }
     .form-group {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
     label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: bold;
     }
     input, select, textarea, button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: none;
       border-radius: 4px;
       box-sizing: border-box;
-      font-size: 14px;
+      font-size: 15px;
     }
     textarea {
       resize: vertical;
@@ -229,7 +230,19 @@
     toggle.addEventListener("click", () => {
       menu.classList.toggle("show");
     });
+
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      const res = await fetch('/.netlify/functions/send-mail', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+      const result = await res.json();
+      alert(result.message);
+    });
   </script>
-  
 </body>
 </html>
