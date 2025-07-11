@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>予約フォーム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
@@ -68,7 +68,7 @@
     }
     .container {
       max-width: 800px;
-      margin: 120px auto 50px;
+      margin: 100px auto 50px;
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
       border-radius: 16px;
@@ -111,130 +111,142 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">LEAD</div>
-    <nav>
-      <div id="menu-toggle">☰</div>
-      <ul id="menu">
-        <li><a href="index.html">トップ</a></li>
-        <li><a href="/course.html">コース料金</a></li>
-        <li><a href="cast.html">キャスト</a></li>
-        <li><a href="index.html#schedule">スケジュール</a></li>
-        <li><a href="index.html#news">お知らせ</a></li>
-        <li><a href="index.html#contact">お問い合わせ</a></li>
-        <li><a href="reserve.html#reserve">予約</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <div class="container">
-    <h1>予約フォーム</h1>
-    <form name="reservation">
-      <div class="form-group">
-        <label for="name">お名前</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">電話番号</label>
-        <input type="tel" id="phone" name="phone" required>
-      </div>
-      <div class="form-group">
-        <label for="email">メールアドレス</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="therapist">ご希望セラピスト</label>
-        <select id="therapist" name="therapist" required>
-          <option value="">セラピストを選択</option>
-          <option value="蒼人">蒼人</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="date">ご希望日</label>
-        <input type="date" id="date" name="date" required>
-      </div>
-      <div class="form-group">
-        <label for="time">ご希望時間</label>
-        <select id="time" name="time" required>
-          <option value="">時間を選択</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="meeting_place">待ち合わせ場所</label>
-        <select id="meeting_place" name="meeting_place" required>
-          <option value="">待ち合わせ場所を選択</option>
-          <option value="最寄駅・指定場所">最寄駅・指定場所</option>
-          <option value="ホテル">ホテル</option>
-          <option value="自宅">自宅</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="meeting_detail">最寄駅・指定場所について</label>
-        <textarea id="meeting_detail" name="meeting_detail" rows="4" placeholder="詳しくご記入ください"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="payment">決済方法</label>
-        <select id="payment" name="payment" required>
-          <option value="">決済方法を選択</option>
-          <option value="現金払い">現金払い</option>
-          <option value="クレジット払い">クレジット払い</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="notes">ご要望・その他</label>
-        <textarea id="notes" name="notes" rows="4"></textarea>
-      </div>
-      <button type="submit">予約する</button>
-    </form>
-  </div>
+<header>
+  <div class="logo">LEAD</div>
+  <nav>
+    <div id="menu-toggle">☰</div>
+    <ul id="menu">
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="course.html">コース料金</a></li>
+      <li><a href="cast.html">キャスト</a></li>
+      <li><a href="index.html#schedule">スケジュール</a></li>
+      <li><a href="index.html#news">お知らせ</a></li>
+      <li><a href="index.html#contact">お問い合わせ</a></li>
+      <li><a href="reserve.html#reserve">予約</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <script>
-    // メール送信用
-    const form = document.querySelector("form");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      const res = await fetch('/.netlify/functions/send-mail', {
-        method: 'POST',
-        body: JSON.stringify(data)
-      });
-      const result = await res.json();
-      alert(result.message);
-    });
+<div class="container">
+  <h1>予約フォーム</h1>
+  <form name="reservation">
+    <div class="form-group">
+      <label for="name">お名前</label>
+      <input type="text" id="name" name="name" required>
+    </div>
 
-    // 時間選択肢
-    const select = document.getElementById("time");
-    for (let hour = 9; hour <= 23; hour++) {
-      for (let min = 0; min < 60; min += 30) {
-        const hourStr = hour.toString().padStart(2, "0");
-        const minStr = min.toString().padStart(2, "0");
-        const timeStr = `${hourStr}:${minStr}`;
-        const option = document.createElement("option");
-        option.value = timeStr;
-        option.textContent = timeStr;
-        select.appendChild(option);
-      }
+    <div class="form-group">
+      <label for="phone">電話番号</label>
+      <input type="tel" id="phone" name="phone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">メールアドレス</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="therapist">ご希望セラピスト</label>
+      <select id="therapist" name="therapist" required>
+        <option value="">セラピストを選択</option>
+        <option value="蒼人">蒼人</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date">ご希望日</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+
+    <div class="form-group">
+      <label for="time">ご希望時間</label>
+      <select id="time" name="time" required>
+        <option value="">時間を選択</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="meeting_place">待ち合わせ場所</label>
+      <select id="meeting_place" name="meeting_place" required>
+        <option value="">待ち合わせ場所を選択</option>
+        <option value="最寄駅・指定場所">最寄駅・指定場所</option>
+        <option value="ホテル">ホテル</option>
+        <option value="自宅">自宅</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="meeting_detail">最寄駅・指定場所について</label>
+      <textarea id="meeting_detail" name="meeting_detail" rows="4" placeholder="詳しくご記入ください"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="payment">決済方法</label>
+      <select id="payment" name="payment" required>
+        <option value="">決済方法を選択</option>
+        <option value="現金払い">現金払い</option>
+        <option value="クレジット払い">クレジット払い</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="notes">ご要望・その他</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
+    </div>
+
+    <button type="submit">予約する</button>
+  </form>
+</div>
+
+<script>
+  // 時間の選択肢生成
+  const select = document.getElementById("time");
+  for (let hour = 9; hour <= 23; hour++) {
+    for (let min = 0; min < 60; min += 30) {
+      const hourStr = hour.toString().padStart(2, "0");
+      const minStr = min.toString().padStart(2, "0");
+      const timeStr = `${hourStr}:${minStr}`;
+      const option = document.createElement("option");
+      option.value = timeStr;
+      option.textContent = timeStr;
+      select.appendChild(option);
     }
-    for (let hour = 0; hour <= 8; hour++) {
-      for (let min = 0; min < 60; min += 30) {
-        if (hour === 8 && min > 30) break;
-        const hourStr = hour.toString().padStart(2, "0");
-        const minStr = min.toString().padStart(2, "0");
-        const timeStr = `${hourStr}:${minStr}`;
-        const option = document.createElement("option");
-        option.value = timeStr;
-        option.textContent = timeStr;
-        select.appendChild(option);
-      }
+  }
+  for (let hour = 0; hour <= 8; hour++) {
+    for (let min = 0; min < 60; min += 30) {
+      if (hour === 8 && min > 30) break;
+      const hourStr = hour.toString().padStart(2, "0");
+      const minStr = min.toString().padStart(2, "0");
+      const timeStr = `${hourStr}:${minStr}`;
+      const option = document.createElement("option");
+      option.value = timeStr;
+      option.textContent = timeStr;
+      select.appendChild(option);
     }
+  }
 
-    // ハンバーガーメニュー
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
+  // ハンバーガーメニュー切り替え
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+
+  // メール送信（Netlify Function 用）
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    const res = await fetch('/.netlify/functions/send-mail', {
+      method: 'POST',
+      body: JSON.stringify(data)
     });
-  </script>
+    const result = await res.json();
+    alert(result.message);
+  });
+</script>
+
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>Course Price</title>
+  <title>コース料金</title>
   <style>
     body {
       margin: 0;
@@ -17,93 +17,64 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    header .logo {
-      font-size: 22px;
-      font-weight: bold;
-      color: #d4af37; /* 金色 */
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-    }
-    nav ul li {
-      margin-left: 20px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 15px;
-    }
-    .container {
-      max-width: 800px;
-      margin: 50px auto;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    }
-    h1 {
-      text-align: center;
-      color: #d4af37;
-      margin-bottom: 30px;
-    }
-    h2 {
-      border-bottom: 1px solid #d4af37;
-      padding-bottom: 5px;
-      margin-top: 40px;
-      color: #d4af37;
-    }
-    table {
+      position: fixed;
+      top: 0;
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 15px;
-      color: #fff;
+      z-index: 1000;
     }
-    td {
-      padding: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    header .logo { font-size: 22px; font-weight: bold; color: #d4af37; }
+    nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    nav ul li { margin-left: 20px; }
+    nav ul li a { text-decoration: none; color: #fff; font-size: 15px; }
+    #menu-toggle { display: none; cursor: pointer; font-size: 26px; color: #fff; }
+    @media (max-width: 768px) {
+      nav ul { display: none; flex-direction: column; background: rgba(0, 0, 0, 0.9); position: absolute; top: 60px; right: 0; width: 200px; padding: 20px; }
+      nav ul.show { display: flex; }
+      #menu-toggle { display: block; }
     }
-    td:first-child {
-      text-align: left;
-    }
-    td:last-child {
-      text-align: right;
-    }
+    .container { max-width: 800px; margin: 100px auto 50px; background: rgba(0,0,0,0.6); padding: 40px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+    h1 { text-align: center; color: #d4af37; margin-bottom: 30px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; color: #fff; }
+    td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    td:first-child { text-align: left; }
+    td:last-child { text-align: right; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">LEAD</div>
-    <nav>
-      <ul>
-        <li><a href="index.html">トップ</a></li>
-        <li><a href="/course.html">コース料金</a></li>
-        <li><a href="cast.html">キャスト</a></li>
-        <li><a href="index.html#schedule">スケジュール</a></li>
-        <li><a href="index.html#news">お知らせ</a></li>
-        <li><a href="index.html#contact">お問い合わせ</a></li>
-        <li><a href="reserve.html#reserve">予約</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <div class="container">
-    <h1>Course Price<br><span style="font-size: 0.8em;">コース料金</span></h1>
+<header>
+  <div class="logo">LEAD</div>
+  <nav>
+    <div id="menu-toggle">☰</div>
+    <ul id="menu">
+      <li><a href="index.html">トップ</a></li>
+      <li><a href="course.html">コース料金</a></li>
+      <li><a href="cast.html">キャスト</a></li>
+      <li><a href="index.html#schedule">スケジュール</a></li>
+      <li><a href="index.html#news">お知らせ</a></li>
+      <li><a href="index.html#contact">お問い合わせ</a></li>
+      <li><a href="reserve.html#reserve">予約</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <h2>施術コース</h2>
-    <table>
-      <tr><td>90分</td><td>18,000円</td></tr>
-      <tr><td>120分</td><td>24,000円</td></tr>
-      <tr><td>150分</td><td>30,000円</td></tr>
-      <tr><td>180分</td><td>36,000円</td></tr>
-      <tr><td>以降1時間毎</td><td>＋6,000円</td></tr>
-    </table>
-
-    <h2>お泊まりコース</h2>
-    <table>
+<div class="container">
+  <h1>Course Price</h1>
+  <table>
+    <tr><td>90分</td><td>18,000円</td></tr>
+    <tr><td>120分</td><td>24,000円</td></tr>
+    <tr><td>150分</td><td>30,000円</td></tr>
+    <tr><td>3時間</td><td>36,000円</td></tr>
+    <tr><td>4時間</td><td>40,000円</td></tr>
+    <tr><td>5時間</td><td>45,000円</td></tr>
+    <tr><td>6時間</td><td>50,000円</td></tr>
+    <tr><td>7時間</td><td>55,000円</td></tr>
+    <tr><td>8時間</td><td>60,000円</td></tr>
+    <tr><td>9時間</td><td>66,000円</td></tr>        
+    <tr><td>10時間</td><td>72,000円</td></tr>
+  </table>
+  <h1 style="margin-top:40px;">お泊まりコース</h1>
+  <table>
       <tr><td>10時間</td><td>60,000円</td></tr>
       <tr><td>11時間</td><td>66,000円</td></tr>
       <tr><td>12時間</td><td>72,000円</td></tr>
@@ -113,7 +84,16 @@
       <tr><td>16時間</td><td>96,000円</td></tr>
       <tr><td>17時間</td><td>102,000円</td></tr>
       <tr><td>18時間</td><td>108,000円</td></tr>
-    </table>
-  </div>
+  </table>
+</div>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+</script>
+
 </body>
 </html>
