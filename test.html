@@ -2,12 +2,19 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>予約フォーム</title>
+  <title>予約フォーム - LEAD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✅ 同じフォントを追加 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Hiragino Sans', 'ヒラギノ角ゴ', sans-serif;
+      font-family: 'Noto Serif JP', serif;
       background: linear-gradient(135deg, #1e130c, #9a8478);
       color: #fff;
     }
@@ -19,7 +26,6 @@
       align-items: center;
       position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
       z-index: 1000;
     }
@@ -27,6 +33,7 @@
       font-size: 22px;
       font-weight: bold;
       color: #d4af37;
+      font-family: 'Playfair Display', serif;
     }
     nav ul {
       list-style: none;
@@ -42,44 +49,9 @@
       color: #fff;
       font-size: 15px;
     }
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      margin: 4px 0;
-    }
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        border-radius: 8px;
-        padding: 10px 0;
-      }
-      nav ul li {
-        margin: 10px 0;
-        text-align: center;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-      nav ul.show {
-        display: flex;
-      }
-    }
-
     .container {
       max-width: 800px;
-      margin: 120px auto 50px; /* 上に余白を追加 */
+      margin: 100px auto 50px;
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
       border-radius: 16px;
@@ -89,6 +61,7 @@
       text-align: center;
       color: #d4af37;
       margin-bottom: 40px;
+      font-family: 'Playfair Display', serif;
     }
     .form-group {
       margin-bottom: 30px;
@@ -105,6 +78,7 @@
       border-radius: 4px;
       box-sizing: border-box;
       font-size: 14px;
+      font-family: 'Noto Serif JP', serif;
     }
     textarea {
       resize: vertical;
@@ -119,20 +93,27 @@
     button:hover {
       background-color: #b8932e;
     }
+    @media (max-width: 768px) {
+      nav ul {
+        flex-wrap: wrap;
+      }
+      nav ul li {
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+      .container {
+        margin-top: 120px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">LEAD</div>
-    <div class="menu-toggle" id="menu-toggle">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
     <nav>
-      <ul id="menu">
+      <ul>
         <li><a href="index.html">トップ</a></li>
-        <li><a href="/course.html">コース料金</a></li>
+        <li><a href="course.html">コース料金</a></li>
         <li><a href="cast.html">キャスト</a></li>
         <li><a href="index.html#schedule">スケジュール</a></li>
         <li><a href="index.html#news">お知らせ</a></li>
@@ -239,10 +220,19 @@
       }
     }
 
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      const res = await fetch('/.netlify/functions/send-mail', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json();
+      alert(result.message);
     });
   </script>
 </body>
