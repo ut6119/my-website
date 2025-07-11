@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>コース料金 - LEAD</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous">
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Hiragino Sans', 'ヒラギノ角ゴ', sans-serif;
       background: linear-gradient(135deg, #1e130c, #9a8478);
       color: #fff;
@@ -41,33 +43,9 @@
       color: #fff;
       font-size: 15px;
     }
-    #menu-toggle {
-      display: none;
-      cursor: pointer;
-      font-size: 24px;
-      color: #fff;
-    }
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        flex-direction: column;
-        background: rgba(0,0,0,0.9);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 20px;
-      }
-      nav ul.show {
-        display: flex;
-      }
-      #menu-toggle {
-        display: block;
-      }
-    }
     .container {
-      max-width: 800px;
-      margin: 120px auto 50px;
+      max-width: 900px;
+      margin: 100px auto 50px;
       background: rgba(0, 0, 0, 0.6);
       padding: 40px;
       border-radius: 16px;
@@ -76,21 +54,18 @@
     h1 {
       text-align: center;
       color: #d4af37;
-      margin-bottom: 30px;
-      font-size: 28px;
+      margin-bottom: 40px;
     }
     h2 {
       border-bottom: 1px solid #d4af37;
       padding-bottom: 5px;
       margin-top: 40px;
       color: #d4af37;
-      font-size: 22px;
     }
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 15px;
-      color: #fff;
     }
     td {
       padding: 12px;
@@ -102,21 +77,32 @@
     td:last-child {
       text-align: right;
     }
+    @media (max-width: 768px) {
+      nav ul {
+        flex-wrap: wrap;
+      }
+      nav ul li {
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+      .container {
+        margin-top: 120px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">LEAD</div>
     <nav>
-      <div id="menu-toggle">☰</div>
-      <ul id="menu">
+      <ul>
         <li><a href="index.html">トップ</a></li>
         <li><a href="course.html">コース料金</a></li>
         <li><a href="cast.html">キャスト</a></li>
         <li><a href="index.html#schedule">スケジュール</a></li>
         <li><a href="index.html#news">お知らせ</a></li>
         <li><a href="index.html#contact">お問い合わせ</a></li>
-        <li><a href="reserve.html">予約</a></li>
+        <li><a href="reserve.html#reserve">予約</a></li>
       </ul>
     </nav>
   </header>
@@ -152,13 +138,5 @@
       <tr><td>18時間</td><td>108,000円</td></tr>
     </table>
   </div>
-
-  <script>
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
-    });
-  </script>
 </body>
 </html>
