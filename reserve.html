@@ -77,7 +77,8 @@
     h1 {
       text-align: center;
       color: #d4af37;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      font-size: 24px; /* ← サイズ小さめに修正 */
     }
     .form-group {
       margin-bottom: 30px;
@@ -199,6 +200,14 @@
   </div>
 
   <script>
+    // ハンバーガーメニュー
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
+
+    // 時間選択
     const select = document.getElementById("time");
     for (let hour = 9; hour <= 23; hour++) {
       for (let min = 0; min < 60; min += 30) {
@@ -224,12 +233,7 @@
       }
     }
 
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    toggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
-    });
-
+    // メール送信
     const form = document.querySelector("form");
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
