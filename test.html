@@ -2,10 +2,10 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>予約フォーム - LEAD</title>
+  <title>予約フォーム - LEAD（リード）</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ 同じフォントを追加 -->
+  <!-- ✅ Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -127,12 +127,12 @@
     <h1>予約フォーム</h1>
     <form name="reservation">
       <div class="form-group">
-        <label for="name">お名前</label>
+        <label for="name">お名前(ペンネーム可)</label>
         <input type="text" id="name" name="name" required>
       </div>
 
       <div class="form-group">
-        <label for="phone">電話番号</label>
+        <label for="phone">電話番号 （数字のみ・ハイフンなし</label>
         <input type="tel" id="phone" name="phone" required>
       </div>
 
@@ -150,12 +150,37 @@
       </div>
 
       <div class="form-group">
+        <label for="course">ご希望コース</label>
+        <select id="course" name="course" required>
+          <option value="">コースを選択</option>
+          <option value="90分">90分</option>
+          <option value="120分">120分</option>
+          <option value="150分">150分</option>
+          <option value="180分">3時間</option>
+          <option value="240分">4時間</option>
+          <option value="300分">5時間</option>
+          <option value="360分">6時間</option>    
+          <option value="420分">7時間</option>
+          <option value="480分">8時間</option>
+          <option value="540分">9時間</option>
+          <option value="600分">10時間</option>
+          <option value="お泊まり">お泊まり12時間</option>
+          <option value="トラベル">トラベル24時間</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="others">その他</label>
+        <textarea id="others" name="others" rows="4" placeholder="その他コースご希望の方はご記入ください"></textarea>
+      </div>
+
+      <div class="form-group">
         <label for="date">ご希望日</label>
         <input type="date" id="date" name="date" required>
       </div>
 
       <div class="form-group">
-        <label for="time">ご希望時間</label>
+        <label for="time">待ち合わせ時間</label>
         <select id="time" name="time" required>
           <option value="">時間を選択</option>
         </select>
@@ -177,9 +202,9 @@
       </div>
 
       <div class="form-group">
-        <label for="payment">決済方法</label>
+        <label for="payment">お支払い方法</label>
         <select id="payment" name="payment" required>
-          <option value="">決済方法を選択</option>
+          <option value="">お支払い方法を選択</option>
           <option value="現金払い">現金払い</option>
           <option value="クレジット払い">クレジット払い</option>
         </select>
@@ -188,6 +213,11 @@
       <div class="form-group">
         <label for="notes">ご要望・その他</label>
         <textarea id="notes" name="notes" rows="4"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="discount">割引適用の申告はこちら</label>
+        <textarea id="discount" name="discount" rows="4" placeholder="割引を適用したい場合はこちらに詳細をご記入ください"></textarea>
       </div>
 
       <button type="submit">予約する</button>
