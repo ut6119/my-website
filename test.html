@@ -2,112 +2,128 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>予約フォーム - LEAD（リード）</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>予約フォーム - LEAD</title>
 
-  <!-- ✅ Google Fonts -->
+  <!-- フォント -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Noto Serif JP', serif;
-      background: linear-gradient(135deg, #1e130c, #9a8478);
-      color: #fff;
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #fdfdfc;
+      color: #333;
     }
+
     header {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 15px 30px;
+      background: #fff0e6;
+      color: #6b4f4f;
+      padding: 20px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
+      border-bottom: 1px solid #e0d5cb;
+      position: sticky;
       top: 0;
-      width: 100%;
       z-index: 1000;
     }
-    header .logo {
-      font-size: 22px;
+
+    .logo {
       font-weight: bold;
-      color: #d4af37;
-      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #b89d5b;
     }
+
     nav ul {
-      list-style: none;
       display: flex;
-      margin: 0;
+      list-style: none;
+      gap: 15px;
       padding: 0;
+      margin: 0;
     }
-    nav ul li {
-      margin-left: 20px;
-    }
-    nav ul li a {
+
+    nav a {
+      color: #6b4f4f;
       text-decoration: none;
-      color: #fff;
-      font-size: 15px;
+      font-size: 14px;
     }
+
     .container {
-      max-width: 800px;
-      margin: 100px auto 50px;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 30px;
+      background: #fff9f5;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
+
     h1 {
+      color: #b89d5b;
+      font-size: 24px;
       text-align: center;
-      color: #d4af37;
-      margin-bottom: 40px;
-      font-family: 'Playfair Display', serif;
-    }
-    .form-group {
       margin-bottom: 30px;
     }
+
     label {
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       font-weight: bold;
+      color: #6b4f4f;
     }
+
     input, select, textarea, button {
       width: 100%;
       padding: 10px;
-      border: none;
-      border-radius: 4px;
-      box-sizing: border-box;
       font-size: 14px;
-      font-family: 'Noto Serif JP', serif;
+      border: 1px solid #e2dcd6;
+      border-radius: 6px;
+      font-family: 'Noto Sans JP', sans-serif;
+      box-sizing: border-box;
+      margin-bottom: 20px;
     }
+
     textarea {
       resize: vertical;
     }
+
     button {
-      background-color: #d4af37;
-      color: #000;
+      background: #b89d5b;
+      color: #fff;
       font-weight: bold;
+      border: none;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     button:hover {
-      background-color: #b8932e;
+      background: #9e8548;
     }
-    @media (max-width: 768px) {
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
       nav ul {
         flex-wrap: wrap;
+        gap: 10px;
+        padding-top: 10px;
       }
-      nav ul li {
-        margin-left: 10px;
-        margin-top: 5px;
-      }
+
       .container {
-        margin-top: 120px;
+        margin: 60px 20px;
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo">LEAD</div>
     <nav>
@@ -115,155 +131,35 @@
         <li><a href="index.html">トップ</a></li>
         <li><a href="course.html">コース料金</a></li>
         <li><a href="cast.html">キャスト</a></li>
-        <li><a href="index.html#schedule">スケジュール</a></li>
-        <li><a href="index.html#news">お知らせ</a></li>
-        <li><a href="index.html#contact">お問い合わせ</a></li>
-        <li><a href="reserve.html#reserve">予約</a></li>
+        <li><a href="reserve.html">予約</a></li>
       </ul>
     </nav>
   </header>
 
   <div class="container">
     <h1>予約フォーム</h1>
-    <form name="reservation">
-      <div class="form-group">
-        <label for="name">お名前(ペンネーム可)</label>
-        <input type="text" id="name" name="name" required>
-      </div>
+    <form>
+      <label for="name">お名前</label>
+      <input type="text" id="name" name="name" required>
 
-      <div class="form-group">
-        <label for="phone">電話番号 （数字のみ・ハイフンなし</label>
-        <input type="tel" id="phone" name="phone" required>
-      </div>
+      <label for="email">メールアドレス</label>
+      <input type="email" id="email" name="email" required>
 
-      <div class="form-group">
-        <label for="email">メールアドレス</label>
-        <input type="email" id="email" name="email" required>
-      </div>
+      <label for="therapist">ご希望セラピスト</label>
+      <select id="therapist" name="therapist" required>
+        <option value="">選択してください</option>
+        <option value="蒼人">蒼人</option>
+      </select>
 
-      <div class="form-group">
-        <label for="therapist">ご希望セラピスト</label>
-        <select id="therapist" name="therapist" required>
-          <option value="">セラピストを選択</option>
-          <option value="蒼人">蒼人</option>
-        </select>
-      </div>
+      <label for="date">ご希望日</label>
+      <input type="date" id="date" name="date" required>
 
-      <div class="form-group">
-        <label for="course">ご希望コース</label>
-        <select id="course" name="course" required>
-          <option value="">コースを選択</option>
-          <option value="90分">90分</option>
-          <option value="120分">120分</option>
-          <option value="150分">150分</option>
-          <option value="180分">3時間</option>
-          <option value="240分">4時間</option>
-          <option value="300分">5時間</option>
-          <option value="360分">6時間</option>    
-          <option value="420分">7時間</option>
-          <option value="480分">8時間</option>
-          <option value="540分">9時間</option>
-          <option value="600分">10時間</option>
-          <option value="お泊まり">お泊まり12時間</option>
-          <option value="トラベル">トラベル24時間</option>
-        </select>
-      </div>
+      <label for="notes">ご要望・その他</label>
+      <textarea id="notes" name="notes" rows="4"></textarea>
 
-      <div class="form-group">
-        <label for="others">その他</label>
-        <textarea id="others" name="others" rows="4" placeholder="その他コースご希望の方はご記入ください"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="date">ご希望日</label>
-        <input type="date" id="date" name="date" required>
-      </div>
-
-      <div class="form-group">
-        <label for="time">待ち合わせ時間</label>
-        <select id="time" name="time" required>
-          <option value="">時間を選択</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="meeting_place">待ち合わせ場所</label>
-        <select id="meeting_place" name="meeting_place" required>
-          <option value="">待ち合わせ場所を選択</option>
-          <option value="最寄駅・指定場所">最寄駅・指定場所</option>
-          <option value="ホテル">ホテル</option>
-          <option value="自宅">自宅</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="meeting_detail">最寄駅・指定場所について</label>
-        <textarea id="meeting_detail" name="meeting_detail" rows="4" placeholder="詳しくご記入ください"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="payment">お支払い方法</label>
-        <select id="payment" name="payment" required>
-          <option value="">お支払い方法を選択</option>
-          <option value="現金払い">現金払い</option>
-          <option value="クレジット払い">クレジット払い</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="notes">ご要望・その他</label>
-        <textarea id="notes" name="notes" rows="4"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="discount">割引適用の申告はこちら</label>
-        <textarea id="discount" name="discount" rows="4" placeholder="割引を適用したい場合はこちらに詳細をご記入ください"></textarea>
-      </div>
-
-      <button type="submit">予約する</button>
+      <button type="submit">送信する</button>
     </form>
   </div>
 
-  <script>
-    const select = document.getElementById("time");
-    for (let hour = 9; hour <= 23; hour++) {
-      for (let min = 0; min < 60; min += 30) {
-        const hourStr = hour.toString().padStart(2, "0");
-        const minStr = min.toString().padStart(2, "0");
-        const timeStr = `${hourStr}:${minStr}`;
-        const option = document.createElement("option");
-        option.value = timeStr;
-        option.textContent = timeStr;
-        select.appendChild(option);
-      }
-    }
-    for (let hour = 0; hour <= 8; hour++) {
-      for (let min = 0; min < 60; min += 30) {
-        if (hour === 8 && min > 30) break;
-        const hourStr = hour.toString().padStart(2, "0");
-        const minStr = min.toString().padStart(2, "0");
-        const timeStr = `${hourStr}:${minStr}`;
-        const option = document.createElement("option");
-        option.value = timeStr;
-        option.textContent = timeStr;
-        select.appendChild(option);
-      }
-    }
-
-    const form = document.querySelector("form");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      const res = await fetch('/.netlify/functions/send-mail', {
-        method: 'POST',
-        body: JSON.stringify(data)
-      });
-
-      const result = await res.json();
-      alert(result.message);
-    });
-  </script>
 </body>
 </html>
