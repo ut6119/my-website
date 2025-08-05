@@ -6,7 +6,7 @@ exports.handler = async function (event, context) {
   // 金額だけ抽出（例：3時間（￥30,000）→ ￥30,000）
   const coursePriceMatch = data.course.match(/￥[\d,]+/);
   const coursePrice = coursePriceMatch ? coursePriceMatch[0] : "（金額未記載）";
-  
+
   console.log("Customer email:", data.email);
 
   const transporter = nodemailer.createTransport({
@@ -67,7 +67,7 @@ ${data.name} 様
 
 ───────────────
 【料金小計】
-合計金額：${coursePrice}（税込）
+${coursePrice}（税込）
 ※交通費や割引については、予約確定後に担当スタッフからのメールでご案内いたします。
 
 ⸻
