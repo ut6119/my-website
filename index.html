@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEAD- 女性用風俗・レンタル彼氏</title>
     <meta name="description" content="女性用風俗、レンタル彼氏を融合させた新たなる形の女風店【LEAD】 貴女の心をセラピストに奪われてみませんか？">
     <meta name="robots" content="index, follow">
-    
+
     <!-- CDN Libraries -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+
     <style>
         :root {
             --primary-color: #1a1a1a;
@@ -27,24 +30,24 @@
             --bg-dark: #0f0f0f;
             --bg-light: #fafafa;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Noto Serif JP', serif;
             line-height: 1.6;
             color: var(--primary-color);
             background-color: var(--bg-light);
         }
-        
+
         .en-font {
             font-family: 'Playfair Display', serif;
         }
-        
+
         /* Header Styles */
         .header {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
@@ -54,24 +57,24 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
         }
-        
+
         .logo {
             font-size: 2rem;
             font-weight: 700;
             color: var(--secondary-color);
             text-decoration: none;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        
+
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 2rem;
             align-items: center;
         }
-        
+
         .nav-menu a {
             color: var(--text-light);
             text-decoration: none;
@@ -81,13 +84,13 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .nav-menu a:hover {
             background: var(--secondary-color);
             color: var(--primary-color);
             transform: translateY(-2px);
         }
-        
+
         /* Mobile Menu */
         .mobile-menu-btn {
             display: none;
@@ -97,7 +100,7 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         .mobile-menu {
             display: none;
             position: absolute;
@@ -106,13 +109,13 @@
             right: 0;
             background: var(--primary-color);
             padding: 1rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
-        
+
         .mobile-menu.active {
             display: block;
         }
-        
+
         .mobile-menu a {
             display: block;
             padding: 1rem;
@@ -121,12 +124,12 @@
             border-bottom: 1px solid var(--accent-color);
             transition: all 0.3s ease;
         }
-        
+
         .mobile-menu a:hover {
             background: var(--secondary-color);
             color: var(--primary-color);
         }
-        
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -139,7 +142,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -150,26 +153,26 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
             opacity: 0.3;
         }
-        
+
         .hero-content {
             z-index: 2;
             max-width: 800px;
             padding: 2rem;
         }
-        
+
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             color: var(--secondary-color);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
-        
+
         .cta-button {
             display: inline-block;
             background: var(--secondary-color);
@@ -181,22 +184,22 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
         }
-        
+
         .cta-button:hover {
             background: #f4d03f;
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
         }
-        
+
         /* Main Slider */
         .main-slider {
             height: 400px;
             margin: 4rem 0;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        
+
         .swiper-slide {
             background: var(--primary-color);
             color: var(--text-light);
@@ -206,7 +209,7 @@
             font-size: 1.2rem;
             position: relative;
         }
-        
+
         .swiper-slide::before {
             content: '';
             position: absolute;
@@ -217,43 +220,43 @@
             background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
             opacity: 0.8;
         }
-        
+
         .slide-content {
             position: relative;
             z-index: 2;
             text-align: center;
             padding: 2rem;
         }
-        
+
         .slide-content h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--secondary-color);
         }
-        
+
         /* Schedule Section */
         .schedule-section {
             background: var(--bg-dark);
             color: var(--text-light);
             padding: 4rem 0;
         }
-        
+
         .schedule-title {
             text-align: center;
             margin-bottom: 3rem;
         }
-        
+
         .schedule-title h2 {
             font-size: 2.5rem;
             color: var(--secondary-color);
             margin-bottom: 0.5rem;
         }
-        
+
         .schedule-title .en-title {
             font-size: 1.2rem;
             opacity: 0.8;
         }
-        
+
         .schedule-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -262,7 +265,7 @@
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
+
         .schedule-card {
             background: var(--primary-color);
             border-radius: 15px;
@@ -273,7 +276,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .schedule-card::before {
             content: '';
             position: absolute;
@@ -285,34 +288,34 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .schedule-card:hover::before {
             opacity: 0.1;
         }
-        
+
         .schedule-card:hover {
             transform: translateY(-5px);
             border-color: var(--secondary-color);
             box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
         }
-        
+
         .schedule-card .time {
             font-size: 1.5rem;
             color: var(--secondary-color);
             margin-bottom: 1rem;
             font-weight: 600;
         }
-        
+
         .schedule-card .name {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
-        
+
         .schedule-card .details {
             opacity: 0.8;
             font-size: 0.9rem;
         }
-        
+
         .schedule-card .status {
             background: var(--secondary-color);
             color: var(--primary-color);
@@ -323,86 +326,86 @@
             margin-top: 1rem;
             display: inline-block;
         }
-        
+
         /* News Section */
         .news-section {
             padding: 4rem 0;
             background: var(--bg-light);
         }
-        
+
         .news-title {
             text-align: center;
             margin-bottom: 3rem;
         }
-        
+
         .news-title h2 {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
-        
+
         .news-title .en-title {
             font-size: 1.2rem;
             opacity: 0.7;
         }
-        
+
         .news-grid {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-        
+
         .news-item {
             background: white;
             border-radius: 15px;
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             border-left: 4px solid var(--secondary-color);
         }
-        
+
         .news-item:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
-        
+
         .news-item .date {
             color: var(--secondary-color);
             font-size: 0.9rem;
             margin-bottom: 1rem;
             font-weight: 600;
         }
-        
+
         .news-item h3 {
             color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
-        
+
         .news-item p {
             color: #666;
             line-height: 1.8;
         }
-        
+
         .news-item a {
             color: var(--secondary-color);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
+
         .news-item a:hover {
             color: var(--accent-color);
         }
-        
+
         /* Footer */
         .footer {
             background: var(--primary-color);
             color: var(--text-light);
             padding: 3rem 0 1rem;
         }
-        
+
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -411,13 +414,13 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-        
+
         .footer-section h3 {
             color: var(--secondary-color);
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
-        
+
         .footer-section p,
         .footer-section a {
             color: var(--text-light);
@@ -426,11 +429,11 @@
             display: block;
             transition: color 0.3s ease;
         }
-        
+
         .footer-section a:hover {
             color: var(--secondary-color);
         }
-        
+
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -438,61 +441,62 @@
             margin-top: 2rem;
             opacity: 0.7;
         }
-        
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
             }
-            
+
             .mobile-menu-btn {
                 display: block;
             }
-            
+
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero p {
                 font-size: 1rem;
             }
-            
+
             .main-slider {
                 height: 300px;
                 margin: 2rem 0;
             }
-            
+
             .schedule-grid {
                 grid-template-columns: 1fr;
                 padding: 0 1rem;
             }
-            
+
             .news-grid {
                 padding: 0 1rem;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
                 padding: 0 1rem;
             }
         }
-        
+
         /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         .fade-in {
             animation: fadeIn 0.8s ease forwards;
         }
-        
+
         /* Contact Info */
         .contact-info {
             background: var(--secondary-color);
@@ -501,19 +505,20 @@
             text-align: center;
             font-weight: 600;
         }
-        
+
         .contact-info a {
             color: var(--primary-color);
             text-decoration: none;
             margin: 0 1rem;
             transition: opacity 0.3s ease;
         }
-        
+
         .contact-info a:hover {
             opacity: 0.8;
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -643,6 +648,7 @@
                 <h3>営業時間</h3>
                 <p><i class="fas fa-clock"></i> 24時間営業</p>
                 <p><i class="fas fa-user-clock"></i> 受付：10時～24時</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:07085561268">070-8556-1268</a></p>
             </div>
             <div class="footer-section">
                 <h3>サービス</h3>
@@ -653,9 +659,10 @@
             </div>
             <div class="footer-section">
                 <h3>SNS</h3>
-                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-                <a href="#"><i class="fab fa-line"></i> LINE</a>
+                <a href="https://x.com/leadaoto?s=21&t=DV4ZUBF5UbDwQ7RzsPQRFg" target="_blank"
+                    rel="noopener noreferrer">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -665,14 +672,14 @@
 
     <!-- Scripts -->
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             // Mobile menu toggle
-            $('.mobile-menu-btn').click(function() {
+            $('.mobile-menu-btn').click(function () {
                 $('.mobile-menu').toggleClass('active');
             });
 
             // Smooth scrolling
-            $('a[href^="#"]').on('click', function(event) {
+            $('a[href^="#"]').on('click', function (event) {
                 var target = $(this.getAttribute('href'));
                 if (target.length) {
                     event.preventDefault();
@@ -683,13 +690,13 @@
             });
 
             // Fade in animation on scroll
-            $(window).scroll(function() {
-                $('.fade-in').each(function() {
+            $(window).scroll(function () {
+                $('.fade-in').each(function () {
                     var elementTop = $(this).offset().top;
                     var elementBottom = elementTop + $(this).outerHeight();
                     var viewportTop = $(window).scrollTop();
                     var viewportBottom = viewportTop + $(window).height();
-                    
+
                     if (elementBottom > viewportTop && elementTop < viewportBottom) {
                         $(this).addClass('fade-in');
                     }
@@ -697,7 +704,7 @@
             });
 
             // Header scroll effect
-            $(window).scroll(function() {
+            $(window).scroll(function () {
                 if ($(window).scrollTop() > 100) {
                     $('.header').addClass('scrolled');
                 } else {
@@ -728,42 +735,43 @@
         });
 
         // Add some interactive effects
-        $('.schedule-card').hover(function() {
+        $('.schedule-card').hover(function () {
             $(this).find('.status').addClass('pulse');
-        }, function() {
+        }, function () {
             $(this).find('.status').removeClass('pulse');
         });
 
         // News item animations
-        $('.news-item').hover(function() {
+        $('.news-item').hover(function () {
             $(this).find('h3').addClass('text-secondary');
-        }, function() {
+        }, function () {
             $(this).find('h3').removeClass('text-secondary');
         });
     </script>
     <style>
-#custom-badge {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #FFD700; /* ← 黄色（ゴールド系） */
-  color: #000;
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
-  z-index: 9999;
-}
-#custom-badge:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.4);
-}
-</style>
+        #custom-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #FFD700;
+            /* ← 黄色（ゴールド系） */
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 9999;
+        }
 
-<a id="custom-badge" href="reserve.html">ご予約はこちら</a>
+        #custom-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+
+    <a id="custom-badge" href="reserve.html">ご予約はこちら</a>
 </body>
-</html>
 
-    
+</html>
