@@ -4,7 +4,7 @@ exports.handler = async function (event, context) {
   const data = JSON.parse(event.body);
 
   console.log("Customer email:", data.email);
-  
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -14,11 +14,12 @@ exports.handler = async function (event, context) {
   });
 
   // 管理者（あなた）への通知メール
-const adminMailOptions = {
-  from: process.env.GMAIL_USER,
-  to: "nhnskk77@gmail.com",
-  subject: `${data.date} ${data.time} ${data.course}`,
-  text: `お名前: ${data.name}
+  const adminMailOptions = {
+    from: process.env.GMAIL_USER,
+    to: "nhnskk77@gmail.com",
+    subject: `${data.date} ${data.time} ${data.course}`,
+    text: `合計金額：${coursePrice}（税込）
+お名前: ${data.name}
 電話番号: ${data.phone}
 メール: ${data.email}
 ご希望セラピスト: ${data.therapist}
@@ -31,36 +32,59 @@ const adminMailOptions = {
 お支払い方法: ${data.payment}
 ご要望・その他: ${data.notes}
 割引申告: ${data.discount}`
-};
+  };
 
   // お客様への自動返信メール
-const userMailOptions = {
-  from: process.env.GMAIL_USER,
-  to: data.email,
-  subject: "【LEAD】ご予約ありがとうございます",
-  text: `${data.name} 様
+  // 金額だけ抽出（例：3時間（￥30,000）→ ￥30,000）
+  const coursePriceMatch = data.course.match(/￥[\d,]+/);
+  const coursePrice = coursePriceMatch ? coursePriceMatch[0] : "（金額未記載）";
 
-※このメールは自動返信です。
+  const userMailOptions = {
+    from: process.env.GMAIL_USER,
+    to: data.email,
+    subject: "【LEAD】ご予約ありがとうございます",
+    text: `※このメールは自動送信です。返信の必要はございません。
 
-このたびはご予約ありがとうございます。
-受付を承りました。
+${data.name} 様
 
-事務局より改めてご連絡いたしますので、しばらくお待ちくださいませ。
+この度は、LEADのご予約フォームよりお申し込みいただき誠にありがとうございます。
+以下の通り、ご入力内容を確認いたしました。
 
-【送信内容確認】
-ご希望セラピスト: ${data.therapist}
-ご希望コース: ${data.course}
-その他: ${data.others}
-ご希望日: ${data.date}
-待ち合わせ時間: ${data.time}
-待ち合わせ場所: ${data.meeting_place}
-最寄駅・指定場所について: ${data.meeting_detail}
-お支払い方法: ${data.payment}
-ご要望・その他: ${data.notes}
-割引申告: ${data.discount}
+※現時点ではまだ予約確定ではありません。
+担当スタッフが内容を確認後、改めて【予約確定メール】をお送りしますので今しばらくお待ちください。
 
-事務局`
-};
+───────────────
+【ご予約内容】
+▶︎ご利用予定日：${data.date}
+▶︎開始時間：${data.time}〜
+▶︎ご希望コース：${data.course}
+▶︎その他：${data.others}
+▶︎セラピスト：${data.therapist}
+▶︎待ち合わせについて：${data.meeting_place}
+▶︎最寄駅・場所について：${data.meeting_detail}
+▶︎お支払い方法：${data.payment}
+▶︎割引申告：${data.discount}
+▶︎ご要望・備考：${data.notes}
+
+───────────────
+【料金小計】
+合計金額：${coursePrice}（税込）
+※交通費や割引については、予約確定後に担当スタッフからのメールでご案内いたします。
+
+⸻
+
+【お客様情報】
+・お名前（ペンネーム可）：${data.name}
+・電話番号：${data.phone}
+・メールアドレス：${data.email}
+
+───────────────
+ご不明点やご希望がある場合は、予約確定後に送付されるメールにご返信いただければ対応可能です。
+
+それでは、ご案内まで今しばらくお待ちいただけますようお願いいたします。
+
+LEAD事務局`
+  };
 
   try {
     // 管理者へ送信
