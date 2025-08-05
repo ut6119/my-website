@@ -2,7 +2,11 @@ const nodemailer = require("nodemailer");
 
 exports.handler = async function (event, context) {
   const data = JSON.parse(event.body);
-
+    // お客様への自動返信メール
+  // 金額だけ抽出（例：3時間（￥30,000）→ ￥30,000）
+  const coursePriceMatch = data.course.match(/￥[\d,]+/);
+  const coursePrice = coursePriceMatch ? coursePriceMatch[0] : "（金額未記載）";
+  
   console.log("Customer email:", data.email);
 
   const transporter = nodemailer.createTransport({
@@ -33,11 +37,6 @@ exports.handler = async function (event, context) {
 ご要望・その他: ${data.notes}
 割引申告: ${data.discount}`
   };
-
-  // お客様への自動返信メール
-  // 金額だけ抽出（例：3時間（￥30,000）→ ￥30,000）
-  const coursePriceMatch = data.course.match(/￥[\d,]+/);
-  const coursePrice = coursePriceMatch ? coursePriceMatch[0] : "（金額未記載）";
 
   const userMailOptions = {
     from: process.env.GMAIL_USER,
